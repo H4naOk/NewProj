@@ -22,32 +22,12 @@
 	</script>
 </head>
 <body>
-	<h1>page fix v2</h1>
 	<div id="root"></div>
 
 	<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
 	<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
 	<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 	<script src="script.js"></script>
-	<script type="text/babel">
-		const ChildComponent = ({ greeting }) => {
-		return (
-						<div>
-								<h2>{greeting}</h2>
-						</div>
-				);
-		};
-
-
-		const App = () => {
-				return (
-					<div>hello<ChildComponent greeting='おはよう'></ChildComponent></div>
-				)
-		}
-		const container = document.getElementById('root')
-
-		const root = ReactDOM.createRoot(container)
-		root.render(<App/>)
-	</script>
+	<script type="text/babel" src="babel.js"></script>
 </body>
 </html>
