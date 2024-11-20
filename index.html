@@ -5,7 +5,6 @@
 	<meta name="viewport" content="width=device-width">
 	<title>Your App</title>
 	<link rel="manifest" href="manifest.json">
-	<link rel="stylesheet" href="https://trac.webkit.org/browser/trunk/Source/WebCore/css/html.css">
 	<link rel="stylesheet" href="style.css">
 	<script id="PWA-installer">
 	if ('serviceWorker' in navigator) {
@@ -22,12 +21,30 @@
 	</script>
 </head>
 <body>
-	<div id="root"></div>
-
-	<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
-	<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
-	<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-	<script src="script.js"></script>
-	<script type="text/babel" src="babel.js"></script>
+<textarea id="text"></textarea>
+<button id="copy">✂️コピーする</button>
+<button id="reset">👋リセット</button>
+<label id="label">0</label>
+<script type="text/javascript">
+const $ = q => document.querySelector(q);
+["input", "paste"].forEach(event=>{
+  $("#text").addEventListener(event, e => {
+    $("#label").innerHTML = e.target.value.length
+  });
+});
+$("#copy").addEventListener("click", e=>{
+  var range = document.createRange();
+  $("#text").select();
+  range.selectNode($("#text"));
+  getSelection().addRange(range);
+  document.execCommand('copy');
+  if (window.getSelection) {window.getSelection().removeAllRanges();}
+  else if (document.selection) {document.selection.empty();}
+});
+$("#reset").addEventListener("click", e=>{
+  $("#text").value = "";
+  $("#label").innerHTML = 0;
+});
+</script>
 </body>
 </html>
