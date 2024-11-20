@@ -19,29 +19,47 @@
 		});
 	}
 	</script>
-		<style>
+	<style>
 body, head {
 	width: 100%;
 	height: 100%;
 	overflow: hidden;
   font-size: 40px;
 }
-#text {
-  width: 80vw;
-  height: 30vh;
-  text-align: left:
-  vertical-align: top;
-}
-#label {
-  display: block;
+body {
+display: flex;
+flex-direction: column ;
+justify-content: center;
+	&>* {
+	width: 100%;
+	background: #00fff40f;
+	}
+	.text-wrapper {
+		display:flex;
+		justify-content: center;
+		#text {
+			width: 80%;
+  		height: 30vh;
+  		text-align: left:
+  		vertical-align: top;
+		}
+	}
+	.buttons {
+		display:flex;
+		justify-content: center;
+	}
 }
 	</style>
 </head>
 <body>
-<textarea id="text"></textarea>
-<button id="copy">✂️コピーする</button>
-<button id="reset">👋リセット</button>
 <label id="label">0</label>
+<div class="text-wrapper">
+	<textarea id="text" placeholder="ここに入力"></textarea>
+</div>
+<div class="buttons">
+	<button id="copy">✂️コピーする</button>
+	<button id="reset">👋リセット</button>
+</div>
 <script type="text/javascript">
 const $ = q => document.querySelector(q);
 ["input", "paste"].forEach(event=>{
